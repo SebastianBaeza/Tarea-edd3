@@ -67,3 +67,34 @@ int hashInsertOfertas(oferta HT[], oferta I) {
 };
 
 
+
+producto hashSearchProducto(producto HT[], int k) {
+    int inicio, i;
+    int pos = inicio = h(k);
+    for (i = 1; HT[pos].cod_producto != VACIA && HT[pos].cod_producto != k; i++)
+        pos = (inicio + p(k, i)) % M; // próxima ranura en la secuencia
+    if (HT[pos].cod_producto == k){
+        return HT[pos]; // registro encontrado, búsqueda exitosa
+    } else {
+        producto val_invalido;
+        val_invalido.cod_producto = -1;
+        val_invalido.precio = -1;
+        return val_invalido; // Ejercicio: solucionar esto!
+    };
+};
+
+oferta hashSearchOferta(oferta HT[], int k) {
+    int inicio, i;
+    int pos = inicio = h(k);
+    for (i = 1; HT[pos].cod_producto != VACIA && HT[pos].cod_producto != k; i++)
+        pos = (inicio + p(k, i)) % M; // próxima ranura en la secuencia
+    if (HT[pos].cod_producto == k){
+        return HT[pos]; // registro encontrado, búsqueda exitosa
+    } else {
+        oferta val_invalido;
+        val_invalido.cod_producto = -1;
+        val_invalido.descuento = -1;
+        val_invalido.cantidad_descuento = -1;
+        return val_invalido; // Ejercicio: solucionar esto!
+    };
+};
